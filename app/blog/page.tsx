@@ -1,5 +1,12 @@
 import Link from "next/link";
 
+interface IPost {
+  userId: number,
+  id: number,
+  title: string,
+  body: string
+}
+
 async function getData() {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
     next: {
@@ -17,7 +24,7 @@ export default async function Blog() {
     <>
       <h1>Blog page</h1>
       <ul>
-        {posts.map((post: any) =>
+        {posts.map((post: IPost) =>
           <li key={post.id}>
             <Link href={`blog/${post.id}`}>{post.title}</Link>
           </li>
