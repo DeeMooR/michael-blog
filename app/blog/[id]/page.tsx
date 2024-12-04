@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
 
 type Props = {
   params: {
@@ -16,7 +17,7 @@ async function getData(id: string) {
   return response.json();
 }
 
-export async function generateMetadata({ params: {id} }: Props) {
+export async function generateMetadata({ params: {id} }: Props): Promise<Metadata> {
   const post = await getData(id);
 
   return {
